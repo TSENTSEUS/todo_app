@@ -86,7 +86,6 @@ const TaskItem: FC<{ task: ITaskItem }> = ({task}) => {
                             editMode={editMode}
                             variant="body2"
                             name="Priority"
-                            status={status}
                             value={editData.priority}
                             onChange={() => editDataHandler}/>
                     </Stack>
