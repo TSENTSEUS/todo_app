@@ -20,16 +20,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 и последняя - иконка удаления.
 Поиск работает следующим образом -
 выбор фильтра, ввод поиска по названию - поиск.
-![zs1](https://github.com/TSENTSEUS/todo_app/assets/92180725/8dfbb46e-2449-4d80-9da7-952d884b7d61)
+![zs1](https://github.com/TSENTSEUS/todo_app/assets/92180725/17b2c3a7-c6d0-44db-b98b-b5fda82124bb)
+
 
 Страница добавления новой тудушки ('/addTodo');
-![zv2](https://github.com/TSENTSEUS/todo_app/assets/92180725/d87a640a-9332-42d1-9f2a-dd7336a1982b)
+![zv2](https://github.com/TSENTSEUS/todo_app/assets/92180725/05decfb6-94ee-4d22-af08-cf0e9957af4f)
 Поля для ввода данных.
 Выбор Приоритета.
 Проверка не пустые ли поля.
 
 Индивидуальная страница тудушки ('/:id');
-![sl1](https://github.com/TSENTSEUS/todo_app/assets/92180725/ef763ed4-d6e7-4375-a8d4-1af78beda406)
+![sl1](https://github.com/TSENTSEUS/todo_app/assets/92180725/0c4c734f-9157-4e2e-9b0f-0dabbaaef496)
 Здесь доступны дополнительные кнопки.
 Редактирование - карандашик(при выборе редактирования появляются инпуты для ввода данных, 
 когда данные введены их нужно сохранить нажав на иконку с дискетой (появится на месте карандашика)).
