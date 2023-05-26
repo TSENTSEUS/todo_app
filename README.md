@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# Todo Test Application for Todor3D
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Скрипт для запуска приложения.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### `Описание функционала`
+Главная страница ('/');
+Список тудушек.
+У каждой таски справа в верхнем углу есть иконки-кнопки.
+На главной странице доступны лишь некоторые из них, а именно:
+галочка-(изменить статус таски(готово-не готово)).
+перейти на страницу отдельно с этой карточкой-(вторая иконка(две стрелочки)).
+и последняя - иконка удаления.
+![zs1](https://github.com/TSENTSEUS/todo_app/assets/92180725/8dfbb46e-2449-4d80-9da7-952d884b7d61)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Страница добавления новой тудушки ('/addTodo');
+![zv2](https://github.com/TSENTSEUS/todo_app/assets/92180725/d87a640a-9332-42d1-9f2a-dd7336a1982b)
+Поля для ввода данных.
+Выбор Приоритета.
+Проверка не пустые ли поля.
 
-### `npm run build`
+Индивидуальная страница тудушки ('/:id');
+![sl1](https://github.com/TSENTSEUS/todo_app/assets/92180725/ef763ed4-d6e7-4375-a8d4-1af78beda406)
+Здесь доступны дополнительные кнопки.
+Редактирование - карандашик(при выборе редактирования появляются инпуты для ввода данных, 
+когда данные введены их нужно сохранить нажав на иконку с дискетой (появится на месте карандашика)).
+так же есть кнопка возврата.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
