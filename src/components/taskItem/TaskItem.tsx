@@ -16,12 +16,12 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import Stack from "@mui/material/Stack";
 import EditIcon from '@mui/icons-material/Edit';
 import {Level} from '../../interface/taskItem'
-import SelectPriority from "../SelectPriority";
 import {SelectChangeEvent} from "@mui/material/Select";
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {editTask, deleteTask} from '../../features/tasks/TasksSlice'
 import LevelIndicator from "../levelIndicator/LevelIndicator";
+import Dropdown from "../Dropdown";
 
 const TaskItem: FC<{ task: ITaskItem }> = ({task}) => {
     const params = useParams();
@@ -63,6 +63,7 @@ const TaskItem: FC<{ task: ITaskItem }> = ({task}) => {
         }
         navigate(`/${id}`)
     }
+
     return (
         <Card variant="outlined" sx={{mb: 2, backgroundColor: status ? 'gray' : 'none', transition: "background-color 0.5s ease",}}>
             <Stack direction="row" alignItems="start" justifyContent="space-between">
@@ -89,6 +90,7 @@ const TaskItem: FC<{ task: ITaskItem }> = ({task}) => {
                             value={editData.priority}
                             onChange={() => editDataHandler}/>
                     </Stack>
+                    <LevelIndicator status={status} level={editData.priority}/>
                 </CardContent>
                 <div>
                     <IconButton size="small" onClick={toggleTaskHandler}>
@@ -113,21 +115,20 @@ interface IEdit {
     editMode: boolean,
     name: string,
     value: string,
-    onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<Level>) => void,
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent) => void,
     color?: string,
     variant: any,
-    status?: boolean
 }
 
-const EditComponent: FC<IEdit> = ({editMode, name, value, onChange, color,status, variant}) => {
+const EditComponent: FC<IEdit> = ({editMode, name, value, onChange, color, variant}) => {
+    const priority:Level[] = ['Low', 'Medium', 'High'];
+
     return (
         <>
             {editMode
-                ? `${name.toLowerCase()}` === 'priority' ? <SelectPriority value={value as Level} onChange={onChange}/>
+                ? `${name.toLowerCase()}` === 'priority' ? <Dropdown name="priority" label="Priority" defaultValue={value} values={priority} onChange={onChange}/>
                     : <TextField value={value} label={name} variant="outlined" name={name} onChange={onChange}/>
-                :
-                `${name.toLowerCase()}` === 'priority' ? <LevelIndicator status={status} level={value as Level}/> :
-                    <Typography variant={variant} component="div" color={color}>
+                : `${name.toLowerCase()}` !== 'priority' && <Typography variant={variant} component="div" color={color}>
                         {value}
                     </Typography>
             }

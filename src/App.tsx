@@ -1,8 +1,7 @@
 import React from 'react';
-import './App.css';
 import {Route, Routes} from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import HomePage from "./components/homepage/HomePage";
+import HomePage from "./pages/HomePage";
 import AddTodo from "./pages/AddTodo";
 import SingleTaskPage from "./pages/SingleTaskPage";
 

@@ -1,27 +1,29 @@
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import {SelectChangeEvent} from "@mui/material/Select";
-import Button from "@mui/material/Button/Button";
-import {Container} from "@mui/material";
+import {Button, Container, FormHelperText, Typography} from "@mui/material";
 import {ChangeEvent, useState} from "react";
 import {ITaskItem, Level} from "../interface/taskItem";
 import {useAppDispatch} from "../hooks/hooks";
 import {addNewTask} from "../features/tasks/TasksSlice";
 import { useNavigate } from "react-router-dom";
-import SelectPriority from "../components/SelectPriority";
+import Dropdown from "../components/Dropdown";
+import FormControl from "@mui/material/FormControl";
 
 const AddTodo = () => {
     const id = Number(Math.random().toString().substring(2, 7));
+    const [error, setError] = useState('');
     const [fields, setFields] = useState<ITaskItem>({
         id: id,
         title: '',
         description: '',
-        priority:'low',
+        priority:'Low',
         status: false,
     });
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<Level>) => {
+    const priority:Level[] = ['Low', 'Medium', 'High'];
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent) => {
         const { name, value } = event.target as HTMLInputElement;
 
         setFields((prevState: ITaskItem) => ({
@@ -30,8 +32,12 @@ const AddTodo = () => {
         }));
     };
     const addNewTodo = () => {
-        dispatch(addNewTask(fields))
-        navigate('/');
+        const { title, description } = fields;
+        if(title && description) {
+            dispatch(addNewTask(fields))
+            navigate('/');
+        }
+        setError('Please, fill all required fields.')
     }
     return (
         <Container sx={{
@@ -40,10 +46,16 @@ const AddTodo = () => {
             justifyContent:'center',
             alignItems:'center',
         }}>
-            Add New Todo
+            <Typography variant="h4" component="h4" my={2}>
+                Add New Todo
+            </Typography>
             <Stack direction={'column'}
-                   sx={{minWidth:'50%'}}
-                   spacing={3}>
+                   sx={{minWidth:'50%'}}>
+                <FormControl sx={{
+                    display:'flex',
+                    flexDirection:'column',
+                    rowGap: '10px'
+                }} error={Boolean(error)} variant="standard">
                 <TextField
                     name="title"
                     value={fields.title}
@@ -59,8 +71,11 @@ const AddTodo = () => {
                     rows={4}
                     variant="outlined"
                 />
-                <SelectPriority value={fields.priority} onChange={handleChange}/>
+                <Dropdown name="priority" label="Priority" defaultValue={fields.priority} values={priority} onChange={handleChange}/>
+                    <FormHelperText>{error}</FormHelperText>
                 <Button variant="outlined" onClick={addNewTodo}>Submit</Button>
+                </FormControl>
+
             </Stack>
 
         </Container>

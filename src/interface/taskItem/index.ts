@@ -1,4 +1,4 @@
-export type Level = "high" | "medium" | "low";
+export type Level = "High" | "Medium" | "Low";
 export interface ITaskItem {
     id: number,
     title: string,
